@@ -1,3 +1,4 @@
+#Instance segmentation with PixelLib is based on Mask R-CNN framework.
 #https://towardsdatascience.com/real-time-image-segmentation-using-5-lines-of-code-7c480abdb835
 # pip3 install pycocotools
 # pip3 install pixellib
