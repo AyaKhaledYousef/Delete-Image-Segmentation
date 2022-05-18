@@ -1,3 +1,4 @@
+#https://towardsdatascience.com/real-time-image-segmentation-using-5-lines-of-code-7c480abdb835
 # pip3 install pycocotools
 # pip3 install pixellib
 # pip3 install pixellib --upgrade
@@ -44,3 +45,21 @@ ins.segmentImage("image.jpeg", show_bboxes=True, text_size=0.5, text_thickness=1
 hh,j=ins.segmentBatch("input", show_bboxes=True, extract_segmented_objects=True,
 save_extracted_objects=True, output_folder_name="output")
 print(hh)
+#------------------------------------------
+# Video Segmentation
+#target_classes = ins.select_target_classes(person = True, bicycle =True)
+
+ins.process_video("sample.mp4", show_bboxes=True, extract_segmented_objects=True, extract_from_box=True,
+                    save_extracted_objects=True, frames_per_second=5,
+                     output_video_name="output_video.mp4")
+
+
+#Code for Segmentation of Live Camera Feeds
+import cv2
+capture = cv2.VideoCapture(0)
+
+segment_video = instanceSegmentation()
+segment_video.load_model("pointrend_resnet50.pkl")
+segment_video.process_camera(capture,  show_bboxes = True, 
+                            frames_per_second= 5, check_fps=True, show_frames= True,
+                            frame_name= "frame", output_video_name="output_video.mp4")
